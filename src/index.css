@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Akhoon Traders theme — Pakistani green, white & gold
+   ------------------------------------------------------------------ */
+@theme {
+  --color-brand-50: #eef7f1;
+  --color-brand-100: #d5ecdc;
+  --color-brand-200: #acd8bb;
+  --color-brand-300: #74bb8f;
+  --color-brand-400: #3f9a66;
+  --color-brand-500: #1f7d49;
+  --color-brand-600: #136339;
+  --color-brand-700: #0d4f2d;
+  --color-brand-800: #01411c; /* Pakistan flag green */
+  --color-brand-900: #023016;
+  --color-brand-950: #011a0c;
+
+  --color-gold-50: #fdf9ec;
+  --color-gold-100: #f8eecb;
+  --color-gold-200: #f0dc93;
+  --color-gold-300: #e6c65a;
+  --color-gold-400: #d9ae32;
+  --color-gold-500: #c19520;
+  --color-gold-600: #a37a19;
+  --color-gold-700: #845e18;
+  --color-gold-800: #6d4d1b;
+  --color-gold-900: #5c401c;
+
+  --color-cream: #fbf8f1;
+  --color-parchment: #f4eedf;
+
+  --font-sans: 'DM Sans Variable', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-cream font-sans text-stone-800 antialiased;
+  }
+  /* Nastaliq needs extra line height so the descenders don't collide */
+  .font-urdu,
+  [lang='ur'] {
+    font-family: var(--font-urdu);
+    line-height: 2.1;
+  }
+  ::selection {
+    @apply bg-gold-200 text-brand-900;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition
+      focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-brand-800 text-white hover:bg-brand-700 focus-visible:outline-brand-700;
+  }
+  .btn-gold {
+    @apply bg-gold-400 text-brand-950 hover:bg-gold-300 focus-visible:outline-gold-500;
+  }
+  .btn-outline {
+    @apply border border-brand-800 text-brand-800 hover:bg-brand-50 focus-visible:outline-brand-700;
+  }
+  .btn-ghost {
+    @apply text-stone-700 hover:bg-stone-100;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus-visible:outline-red-600;
+  }
+  .btn-whatsapp {
+    @apply bg-[#25d366] text-white hover:bg-[#1ebe5b];
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-sm text-stone-800 shadow-sm
+      placeholder:text-stone-400 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-600/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-stone-700;
+  }
+  .card {
+    @apply rounded-2xl border border-stone-200/80 bg-white shadow-sm;
+  }
+
+  .bg-pattern-dark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d9ae32' stroke-opacity='0.16' stroke-width='1'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7'/%3E%3Cpath d='M0 0l16 16M64 0L48 16M0 64l16-16M64 64L48 48'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .bg-pattern-light {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%2301411c' stroke-opacity='0.06' stroke-width='1'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7'/%3E%3Cpath d='M0 0l16 16M64 0L48 16M0 64l16-16M64 64L48 48'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Invoice printing from the admin order page */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
